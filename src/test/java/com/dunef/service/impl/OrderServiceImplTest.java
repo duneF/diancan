@@ -3,6 +3,7 @@ package com.dunef.service.impl;
 import com.dunef.dataobject.OrderDetail;
 import com.dunef.dto.OrderDTO;
 import com.dunef.enums.OrderStatusEnum;
+import com.dunef.enums.PayStatusEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,10 +31,10 @@ public class OrderServiceImplTest {
     @Autowired
     private OrderServiceImpl orderService;
 
-    private String ORDER_ID="1513818242290471796";
+    private String ORDER_ID = "1513818242290471796";
 
 
-    private final String BUYER_OPENID="110110";
+    private final String BUYER_OPENID = "110110";
     private ArrayList<OrderDetail> orderDetailList;
     private OrderDetail ol;
     private OrderDetail ol1;
@@ -65,17 +66,17 @@ public class OrderServiceImplTest {
 
         orderDTO.setOrderDetailList ( orderDetailList );
         result = orderService.create ( orderDTO );
-        log.info ( "[创建订单]result={}",result );
+        log.info ( "[创建订单]result={}", result );
 
-        Assert.assertNotNull (result);
+        Assert.assertNotNull ( result );
 
     }
 
     @Test
     public void findOne() throws Exception {
         result = orderService.findOne ( ORDER_ID );
-        log.info ( "查询单个订单 result={}",result );
-        Assert.assertEquals ( ORDER_ID,result.getOrderId () );
+        log.info ( "查询单个订单 result={}", result );
+        Assert.assertEquals ( ORDER_ID, result.getOrderId () );
 
     }
 
@@ -83,22 +84,27 @@ public class OrderServiceImplTest {
     public void findList() throws Exception {
         request = new PageRequest ( 0, 2 );
         orderDTOPage = orderService.findList ( BUYER_OPENID, request );
-        Assert.assertNotEquals ( 0,orderDTOPage.getTotalElements () );
+        Assert.assertNotEquals ( 0, orderDTOPage.getTotalElements () );
     }
 
     @Test
     public void cancel() throws Exception {
         orderDTO1 = orderService.findOne ( ORDER_ID );
         result = orderService.cancel ( orderDTO1 );
-        Assert.assertEquals ( OrderStatusEnum.CANCEL.getCode (),result.getOrderStatus () );
+        Assert.assertEquals ( OrderStatusEnum.CANCEL.getCode (), result.getOrderStatus () );
     }
 
     @Test
     public void finish() throws Exception {
+        orderDTO1 = orderService.findOne ( ORDER_ID );
+        result = orderService.finish ( orderDTO1 );
+        Assert.assertEquals ( OrderStatusEnum.FINISHED.getCode (), result.getOrderStatus () );
     }
 
     @Test
     public void paid() throws Exception {
+        orderDTO1 = orderService.findOne ( ORDER_ID );
+        result = orderService.paid ( orderDTO1 );
+        Assert.assertEquals ( PayStatusEnum.SUCCESS.getCode (), result.getPayStatus () );
     }
-
 }
