@@ -1,5 +1,6 @@
 package com.dunef.utils;
 
+import com.dunef.dto.OrderDTO;
 import com.dunef.vo.ResultVO;
 
 /**
@@ -10,20 +11,26 @@ import com.dunef.vo.ResultVO;
  */
 public class ResultVOUtil {
 
-    private static ResultVO<Object> resultVO;
+    private static ResultVO<Object> resultVO=new ResultVO<> ();
 
     public static ResultVO success(Object object){
-        resultVO = new ResultVO<> ();
+       // resultVO = new ResultVO<> ();
         resultVO.setData ( object );
         resultVO.setCode ( 0 );
         resultVO.setMsg ( "成功" );
         return resultVO;
     }
 
+    public static ResultVO sussess(OrderDTO orderDTO){
+        resultVO.setData ( orderDTO );
+        resultVO.setCode ( 0 );
+        resultVO.setMsg ( "成功" );
+        return resultVO;
+    }
     public static ResultVO sussess(){
+
         return success ( null );
     }
-
     public static ResultVO error(Integer code,String msg){
         resultVO.setCode ( code );
         resultVO.setMsg ( msg );
