@@ -12,4 +12,11 @@ server:
   context-path: /dianCan
 
 
+wechat:
+  mpAppId: wx3f1a9317f76a3389
+  mpAppSecret: 744a111a8979d5d4b4ab05c887789e27
+
+
+
+
 

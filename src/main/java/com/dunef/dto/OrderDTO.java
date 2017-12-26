@@ -3,7 +3,9 @@ package com.dunef.dto;
 import com.dunef.dataobject.OrderDetail;
 import com.dunef.enums.OrderStatusEnum;
 import com.dunef.enums.PayStatusEnum;
+import com.dunef.utils.EnumUtil;
 import com.dunef.utils.serializer.Date2LongSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
@@ -49,5 +51,16 @@ public class OrderDTO {
     private Date updateTime;
 
     private List<OrderDetail> orderDetailList;
+
+
+    //以下代码为了实现在后台展示状态用已完结，新订单等替代0，1，2
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode ( orderStatus,OrderStatusEnum.class );
+    }
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode ( payStatus,PayStatusEnum.class );
+    }
 
 }
