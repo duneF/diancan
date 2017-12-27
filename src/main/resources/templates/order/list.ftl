@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>买家商品列表</title>
@@ -36,17 +37,11 @@
                     <td>详情</td>
                     <td>取消</td>
                 </tr>
-
-
                 </#list>
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 </body>
-
-
 </html>
