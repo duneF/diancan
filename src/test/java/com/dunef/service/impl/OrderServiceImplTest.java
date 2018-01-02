@@ -47,8 +47,35 @@ public class OrderServiceImplTest {
 
     @Test
     public void create() throws Exception {
+//        for (int i = 5; i < 20; i++) {
+//
+//
+//           orderDTO = new OrderDTO ();
+//           orderDTO.setBuyerName ( "聊"+i );
+//           orderDTO.setBuyerAddress ( "慕课网" );
+//           orderDTO.setBuyerPhone ( "12312312312" );
+//           orderDTO.setBuyerOpenid ( BUYER_OPENID );
+//           //购物车
+//           orderDetailList = new ArrayList<> ();
+//           ol = new OrderDetail ();
+//           ol.setProductId ( "213" );
+//           ol.setProductQuantity ( 1 );
+//           ol1 = new OrderDetail ();
+//           ol1.setProductId ( "123" );
+//           ol1.setProductQuantity ( 2 );
+//
+//           orderDetailList.add ( ol );
+//           orderDetailList.add ( ol1 );
+//
+//           orderDTO.setOrderDetailList ( orderDetailList );
+//           result = orderService.create ( orderDTO );
+//           log.info ( "[创建订单]result={}", result );
+//
+//           Assert.assertNotNull ( result );
+//
+//       }
         orderDTO = new OrderDTO ();
-        orderDTO.setBuyerName ( "廖师兄" );
+        orderDTO.setBuyerName ( "聊4" );
         orderDTO.setBuyerAddress ( "慕课网" );
         orderDTO.setBuyerPhone ( "12312312312" );
         orderDTO.setBuyerOpenid ( BUYER_OPENID );
