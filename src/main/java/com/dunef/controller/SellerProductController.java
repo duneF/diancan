@@ -7,6 +7,7 @@ import com.dunef.exception.SellException;
 import com.dunef.form.ProductForm;
 import com.dunef.service.CategoryService;
 import com.dunef.service.ProductService;
+import com.dunef.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,8 +121,14 @@ public class SellerProductController {
             map.put ( "url","/dianCan/seller/product/index" );
             return new ModelAndView ( "common/error",map );
         }
+            productInfo=new ProductInfo ();
         try {
+            //如果productId为空,则说明是新增.else说明是update
+            if (!StringUtils.isEmpty ( form.getProductId () )){
             productInfo=productService.findOne ( form.getProductId () );
+            }else {
+                form.setProductId ( KeyUtil.genUniqueKey () );
+            }
             BeanUtils.copyProperties (form,productInfo);
             productService.save ( productInfo );
         } catch (SellException e) {

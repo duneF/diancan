@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <table class="table table-bordered table-condensed">
+                    <table class="table table-bordered table-condensed" border="1">
                         <thead>
                         <tr>
                             <th>商品id</th>
